@@ -2,7 +2,7 @@
 
 A simple full-stack to-do app built as a take-home assessment for Studio Graphene.
 
-Live Frontend: https://task-manager-chi-eosin-55.vercel.app/
+Live Frontend: https://task-manager-chi-eosin-55.vercel.app
 Live Backend: https://task-manager-3796.onrender.com
 
 Note: The backend is on Render's free tier, so the first load after inactivity can take around 30-60 seconds to wake up.
@@ -11,9 +11,11 @@ Note: The backend is on Render's free tier, so the first load after inactivity c
 
 ## Tech Stack
 
-- Frontend: React, Vite, Tailwind CSS
-- Backend: Node.js, Express.js
-- Storage: Local tasks.json file using Node's fs module
+- React with Vite — Vite is faster to set up than Create React App and the dev server starts almost instantly.
+- Tailwind CSS — lets you style directly in JSX without writing separate CSS files, which kept the project simple.
+- Node.js with Express — straightforward choice for building a REST API quickly with minimal setup.
+- Native fs module — used to read and write a local tasks.json file instead of setting up a database. The brief said a JSON file was fine and it fits the scope.
+- fetch API — built into the browser so no extra library needed for HTTP calls.
 
 ---
 
@@ -62,7 +64,26 @@ Keep both terminals running at the same time.
 
 ---
 
-## API Endpoints
+## Project Structure
+
+```
+task-manager/
+├── task-manager-backend/
+│   ├── server.js        Express API — all routes and file read/write logic
+│   ├── tasks.json       Local data store, acts as the database
+│   └── package.json
+│
+└── task-manager-frontend/
+    ├── src/
+    │   ├── App.jsx      All React components and frontend logic
+    │   └── index.css    Tailwind CSS directives
+    ├── index.html
+    └── package.json
+```
+
+---
+
+## API Documentation
 
 Base URL: http://localhost:5000
 
@@ -91,3 +112,9 @@ Base URL: http://localhost:5000
 - User login so multiple people can have their own task lists
 - Search by task title
 - Basic tests using Jest
+
+---
+
+## Note on AI Tools
+
+I used Claude to help with parts of this project, as the brief says AI tools are allowed. 
