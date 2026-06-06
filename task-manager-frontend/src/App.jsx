@@ -79,7 +79,7 @@ function AddTaskForm({ onAdd }) {
   return (
     <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 mb-8">
       <h2 className="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
-        <span className="text-2xl">✍️</span> Add New Task
+        <span className="text-2xl">📝</span> Add New Task
       </h2>
       {error && (
         <div className="mb-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2">
