@@ -118,3 +118,10 @@ Base URL: http://localhost:5000
 ## Note on AI Tools
 
 I used Claude to help with parts of this project, as the brief says AI tools are allowed. 
+
+
+---
+
+## Author
+
+Built By- Robin Singh  Negi 
