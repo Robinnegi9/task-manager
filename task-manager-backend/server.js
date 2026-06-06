@@ -65,7 +65,10 @@ function writeTasks(tasks) {
 // ================================================================
 // ROUTES
 // ================================================================
-
+// Health check route — confirms the API is alive
+app.get("/", (req, res) => {
+  res.json({ status: "ok", message: "Task Manager API is running." });
+});
 // ----------------------------------------------------------------
 // GET /tasks
 // Returns every task stored in the JSON file.
