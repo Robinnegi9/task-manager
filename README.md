@@ -1,66 +1,42 @@
-# 📋 Personal Task Manager
+# Personal Task Manager
 
-A full-stack task management application built as a take-home assessment for **Studio Graphene**. Users can create, view, update, and delete personal tasks — with filtering, overdue highlighting, and persistent storage via a local JSON file.
+A simple full-stack to-do app built as a take-home assessment for Studio Graphene.
 
----
+Live Frontend: https://task-manager-chi-eosin-55.vercel.app/
+Live Backend: https://task-manager-3796.onrender.com
 
-## 🚀 Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend | React 18, Vite, Tailwind CSS |
-| Backend | Node.js, Express.js |
-| Data Store | Local `tasks.json` file via Node's `fs` module |
-| HTTP | Native `fetch` API |
+Note: The backend is on Render's free tier, so the first load after inactivity can take around 30-60 seconds to wake up.
 
 ---
 
-## ✅ Features
+## Tech Stack
 
-- **Add tasks** with a title (required), description (optional), and due date (optional)
-- **View all tasks** sorted by creation date — newest first
-- **Toggle status** between Active and Completed with a single click
-- **Edit tasks** inline — update title, description, or due date
-- **Delete tasks** with a confirmation prompt before removal
-- **Filter** the list by All, Active, or Completed
-- **Active vs Completed counter** displayed in the header
-- **Overdue highlight** — tasks past their due date are visually flagged in red
-- **Empty state UI** — friendly messages when no tasks exist
-- **Error handling** — clean banner shown if the backend is unreachable
+- Frontend: React, Vite, Tailwind CSS
+- Backend: Node.js, Express.js
+- Storage: Local tasks.json file using Node's fs module
 
 ---
 
-## 📁 Project Structure
+## Features
 
-```
-task-manager/
-├── task-manager-backend/
-│   ├── server.js          # Express API — all routes & file I/O logic
-│   ├── tasks.json         # Local JSON data store
-│   └── package.json
-│
-└── task-manager-frontend/
-    ├── src/
-    │   ├── App.jsx        # All React components & logic
-    │   └── index.css      # Tailwind directives
-    ├── index.html
-    └── package.json
-```
+- Add a task with a title (required), description, and due date
+- View all tasks sorted by creation date, newest first
+- Mark a task as complete or incomplete
+- Edit a task's title, description, or due date
+- Delete a task with a confirmation prompt
+- Filter tasks by All, Active, or Completed
+- Shows a count of active and completed tasks
+- Tasks with a past due date are highlighted in red
+- Shows a simple empty state when there are no tasks
+- If the backend is unreachable, a clear error message is shown instead of a broken screen
 
 ---
 
-## ⚙️ How to Run Locally
+## How to Run Locally
 
-You need **Node.js v18+** installed. Clone the repo, then follow the steps below.
+You need Node.js installed. Clone the repo first.
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/YOUR_USERNAME/task-manager.git
-cd task-manager
-```
-
-### 2. Start the Backend
+### 1. Start the backend
 
 ```bash
 cd task-manager-backend
@@ -68,13 +44,11 @@ npm install
 npm run dev
 ```
 
-The backend will start at: `http://localhost:5000`
+This starts the API at http://localhost:5000
 
-> The `tasks.json` file is created automatically on first run if it doesn't exist.
+### 2. Start the frontend
 
-### 3. Start the Frontend
-
-Open a **new terminal** (keep the backend running), then:
+Open a new terminal and run:
 
 ```bash
 cd task-manager-frontend
@@ -82,75 +56,38 @@ npm install
 npm run dev
 ```
 
-The frontend will start at: `http://localhost:5173`
+This starts the app at http://localhost:5173
 
-### 4. Open in Browser
-
-```
-http://localhost:5173
-```
-
-Both terminals must be running simultaneously for the app to work.
+Keep both terminals running at the same time.
 
 ---
 
-## 🔌 API Endpoints
+## API Endpoints
 
-Base URL: `http://localhost:5000`
+Base URL: http://localhost:5000
 
-| Method | Endpoint | Description | Success | Error |
-|---|---|---|---|---|
-| GET | `/tasks` | Fetch all tasks (newest first) | 200 | 500 |
-| POST | `/tasks` | Create a new task (`title` required) | 201 | 400 |
-| PUT | `/tasks/:id` | Update title, description, dueDate, or status | 200 | 404 |
-| DELETE | `/tasks/:id` | Delete a task by ID | 200 | 404 |
-
-### Example Request — Create a Task
-
-```json
-POST /tasks
-Content-Type: application/json
-
-{
-  "title": "Finish assessment",
-  "description": "Submit before the deadline",
-  "dueDate": "2026-06-10"
-}
-```
-
-### Example Response
-
-```json
-{
-  "id": "a1b2c3d4-...",
-  "title": "Finish assessment",
-  "description": "Submit before the deadline",
-  "dueDate": "2026-06-10",
-  "status": "pending",
-  "createdAt": "2026-06-06T10:00:00.000Z"
-}
-```
+| Method | Endpoint | What it does |
+|---|---|---|
+| GET | /tasks | Get all tasks |
+| POST | /tasks | Create a new task (title is required) |
+| PUT | /tasks/:id | Update a task |
+| DELETE | /tasks/:id | Delete a task |
 
 ---
 
-## 🔮 Honesty & Future Improvements
+## What Works
 
-### What works perfectly
-- Full CRUD (Create, Read, Update, Delete) — end-to-end
-- Status filtering (All / Active / Completed)
-- Local data persistence via `tasks.json` — survives server restarts
-- Overdue task detection and visual highlighting
-- Clean error handling — the UI gracefully informs the user if the backend is unreachable
-
-### What I would add with more time
-- **Drag-and-drop reordering** — let users manually prioritise their task list (using a library like `@dnd-kit/core`)
-- **Real database** — replace `tasks.json` with MongoDB or PostgreSQL for scalability and concurrent-user safety
-- **User authentication** — add JWT-based login so multiple users can each have their own private task lists
-- **Search by title** — a live search input to quickly filter tasks by keyword
-- **Unit & integration tests** — Jest on the backend, React Testing Library on the frontend
+- Full CRUD works end to end
+- Data is saved to a tasks.json file so it survives server restarts
+- Basic try/catch error handling on both frontend and backend
+- If the backend is down, the frontend shows a clean message instead of crashing
 
 ---
 
-## 👨‍💻 Author
+## What I Would Add With More Time
 
-Built by **[Your Name]** as part of the Studio Graphene Junior Full Stack Developer assessment.
+- Drag and drop to reorder tasks
+- A proper database like MongoDB instead of a JSON file
+- User login so multiple people can have their own task lists
+- Search by task title
+- Basic tests using Jest

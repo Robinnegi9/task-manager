@@ -7,7 +7,7 @@
 import { useState, useEffect } from "react";
 
 // ── API base URL — change this if your backend runs on a different port
-const API_URL = "http://localhost:5000/tasks";
+const API_URL = "https://task-manager-3796.onrender.com/tasks";
 
 // ================================================================
 // HELPER: Check if a task is overdue
